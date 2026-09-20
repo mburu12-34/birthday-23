@@ -2,9 +2,10 @@ const intro = document.getElementById("intro");
 const countdownScene = document.getElementById("countdownScene");
 const birthday = document.getElementById("birthday");
 const countdown = document.getElementById("countdown");
-const beginButton = document.getElementById("beginButton");
 
+const beginButton = document.getElementById("beginButton");
 const music = document.getElementById("birthdayMusic");
+
 const wish = document.getElementById("wish");
 const wishButton = document.getElementById("wishButton");
 const message = document.getElementById("message");
@@ -14,27 +15,334 @@ const finalAge = 23;
 
 
 /* =========================
-   START EXPERIENCE
+   TAP TO BEGIN
 ========================= */
 
-beginButton.addEventListener("click", () => {
+beginButton.onclick = function () {
 
-  music.volume = 0.65;
+  console.log("Begin button clicked");
 
-  music.play().catch(() => {});
+  if (music) {
+    music.volume = 0.65;
+
+    music.play().catch(function () {
+      console.log("Music could not autoplay.");
+    });
+  }
 
   intro.classList.add("hidden");
 
   countdownScene.classList.remove("hidden");
 
   startCountdown();
-});
+};
 
 
 /* =========================
-   AGE COUNTDOWN
+   COUNTDOWN
 ========================= */
 
+let number = 1;
+
+function startCountdown() {
+
+  number = 1;
+
+  showNumber();
+}
+
+
+function showNumber() {
+
+  countdown.textContent = number;
+
+  countdown.style.animation = "none";
+
+  void countdown.offsetWidth;
+
+  countdown.style.animation = "numberIn .8s ease";
+
+
+  if (number < finalAge) {
+
+    number++;
+
+    let speed = 400;
+
+    if (number < 8) {
+      speed = 650;
+    } 
+    else if (number < 15) {
+      speed = 500;
+    } 
+    else if (number < 20) {
+      speed = 380;
+    }
+
+    setTimeout(showNumber, speed);
+
+  } else {
+
+    setTimeout(revealBirthday, 1400);
+  }
+}
+
+
+/* =========================
+   BIRTHDAY REVEAL
+========================= */
+
+function revealBirthday() {
+
+  countdownScene.classList.add("hidden");
+
+  birthday.classList.remove("hidden");
+
+  createCandles();
+
+  createFireworks(45);
+
+  createConfetti(180);
+
+
+  setTimeout(function () {
+
+    wish.classList.remove("hidden");
+
+  }, 2500);
+}
+
+
+/* =========================
+   CANDLES
+========================= */
+
+function createCandles() {
+
+  if (!candles) return;
+
+  candles.innerHTML = "";
+
+  for (let i = 0; i < finalAge; i++) {
+
+    const candle = document.createElement("div");
+
+    candle.className = "candle";
+
+    const flame = document.createElement("div");
+
+    flame.className = "fire";
+
+    candle.appendChild(flame);
+
+    candles.appendChild(candle);
+  }
+}
+
+
+/* =========================
+   MAKE A WISH
+========================= */
+
+if (wishButton) {
+
+  wishButton.onclick = function () {
+
+    const flames =
+      document.querySelectorAll(".fire");
+
+    flames.forEach(function (flame, index) {
+
+      setTimeout(function () {
+
+        flame.classList.add("blown");
+
+      }, index * 25);
+
+    });
+
+
+    const title =
+      wish.querySelector("h3");
+
+    const paragraph =
+      wish.querySelector("p");
+
+
+    if (title) {
+      title.textContent = "✨ Wish made... ✨";
+    }
+
+    if (paragraph) {
+      paragraph.textContent =
+        "May every beautiful wish in your heart find its way to you. ❤️";
+    }
+
+
+    wishButton.style.display = "none";
+
+
+    createFireworks(70);
+
+    createConfetti(250);
+
+
+    setTimeout(function () {
+
+      wish.classList.add("hidden");
+
+      message.classList.remove("hidden");
+
+      createFireworks(35);
+
+      createConfetti(150);
+
+    }, 1800);
+  };
+}
+
+
+/* =========================
+   FIREWORKS
+========================= */
+
+function createFireworks(amount) {
+
+  for (let i = 0; i < amount; i++) {
+
+    setTimeout(function () {
+
+      createFirework();
+
+    }, Math.random() * 2500);
+  }
+}
+
+
+function createFirework() {
+
+  const container =
+    document.getElementById("fireworks");
+
+  if (!container) return;
+
+  const firework =
+    document.createElement("div");
+
+  firework.className = "firework";
+
+  firework.style.left =
+    Math.random() * 100 + "%";
+
+  firework.style.top =
+    10 + Math.random() * 55 + "%";
+
+
+  const colors = [
+    "#ff4f91",
+    "#ffd166",
+    "#ffffff",
+    "#b967ff",
+    "#ff6b6b",
+    "#7df9ff"
+  ];
+
+
+  for (let i = 0; i < 40; i++) {
+
+    const particle =
+      document.createElement("span");
+
+    const angle =
+      (Math.PI * 2 * i) / 40;
+
+    const distance =
+      40 + Math.random() * 90;
+
+
+    particle.style.setProperty(
+      "--x",
+      Math.cos(angle) * distance + "px"
+    );
+
+    particle.style.setProperty(
+      "--y",
+      Math.sin(angle) * distance + "px"
+    );
+
+
+    particle.style.background =
+      colors[
+        Math.floor(
+          Math.random() * colors.length
+        )
+      ];
+
+
+    firework.appendChild(particle);
+  }
+
+
+  container.appendChild(firework);
+
+
+  setTimeout(function () {
+
+    firework.remove();
+
+  }, 1600);
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function createConfetti(amount) {
+
+  const container =
+    document.getElementById("confetti");
+
+  if (!container) return;
+
+
+  for (let i = 0; i < amount; i++) {
+
+    const piece =
+      document.createElement("span");
+
+    piece.className =
+      "confetti-piece";
+
+
+    piece.style.left =
+      Math.random() * 100 + "%";
+
+
+    piece.style.animationDelay =
+      Math.random() * 2 + "s";
+
+
+    piece.style.animationDuration =
+      3 + Math.random() * 4 + "s";
+
+
+    piece.style.background =
+      "hsl(" +
+      Math.random() * 360 +
+      ", 90%, 65%)";
+
+
+    container.appendChild(piece);
+
+
+    setTimeout(function () {
+
+      piece.remove();
+
+    }, 8000);
+  }
+     }
 let number = 1;
 
 function startCountdown() {
