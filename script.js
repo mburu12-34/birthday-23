@@ -1,40 +1,263 @@
-const intro = document.getElementById("intro");
-const countdownScene = document.getElementById("countdownScene");
-const birthday = document.getElementById("birthday");
-const countdown = document.getElementById("countdown");
+document.addEventListener("DOMContentLoaded", () => {
 
-const beginButton = document.getElementById("beginButton");
-const music = document.getElementById("birthdayMusic");
+  const intro = document.getElementById("intro");
+  const countdownScreen = document.getElementById("countdownScreen");
+  const birthdayScreen = document.getElementById("birthdayScreen");
+  const messageScreen = document.getElementById("messageScreen");
+  const finalScreen = document.getElementById("finalScreen");
 
-const wish = document.getElementById("wish");
-const wishButton = document.getElementById("wishButton");
-const message = document.getElementById("message");
-const candles = document.getElementById("candles");
+  const countdownNumber = document.getElementById("countdownNumber");
+  const wishButton = document.getElementById("wishButton");
+  const music = document.getElementById("birthdayMusic");
 
-const finalAge = 23;
+  let fireworksInterval;
 
 
-/* =========================
-   TAP TO BEGIN
-========================= */
-
-beginButton.onclick = function () {
-
-  console.log("Begin button clicked");
-
-  if (music) {
-    music.volume = 0.65;
-
-    music.play().catch(function () {
-      console.log("Music could not autoplay.");
+  function showScreen(screen) {
+    document.querySelectorAll(".screen").forEach(s => {
+      s.classList.remove("active");
     });
+
+    screen.classList.add("active");
   }
 
-  intro.classList.add("hidden");
 
-  countdownScene.classList.remove("hidden");
+  function launchFirework(big = false) {
 
-  startCountdown();
+    const fireworks = document.getElementById("fireworks");
+
+    const firework = document.createElement("div");
+    firework.className = "firework";
+
+    firework.style.left = Math.random() * 100 + "%";
+    firework.style.top = (15 + Math.random() * 55) + "%";
+
+    const amount = big ? 32 : 18;
+
+    for (let i = 0; i < amount; i++) {
+
+      const spark = document.createElement("span");
+      spark.className = "spark";
+
+      const angle = (360 / amount) * i;
+      const distance = big
+        ? 80 + Math.random() * 80
+        : 45 + Math.random() * 60;
+
+      spark.style.transform =
+        `rotate(${angle}deg) translateY(-${distance}px)`;
+
+      spark.style.background =
+        `hsl(${Math.random() * 360}, 100%, 75%)`;
+
+      firework.appendChild(spark);
+    }
+
+    fireworks.appendChild(firework);
+
+    setTimeout(() => {
+      firework.remove();
+    }, 1500);
+  }
+
+
+  function startFireworks(big = false) {
+
+    launchFirework(big);
+
+    if (fireworksInterval) {
+      clearInterval(fireworksInterval);
+    }
+
+    fireworksInterval = setInterval(() => {
+      launchFirework(big);
+    }, big ? 550 : 1100);
+
+  }
+
+
+  function stopFireworks() {
+
+    if (fireworksInterval) {
+      clearInterval(fireworksInterval);
+      fireworksInterval = null;
+    }
+
+  }
+
+
+  function confettiBurst() {
+
+    const confetti = document.getElementById("confetti");
+
+    for (let i = 0; i < 100; i++) {
+
+      const piece = document.createElement("div");
+
+      piece.className = "confetti-piece";
+
+      piece.style.left = Math.random() * 100 + "%";
+      piece.style.top = "-20px";
+
+      piece.style.background =
+        `hsl(${Math.random() * 360}, 100%, 70%)`;
+
+      piece.style.animationDelay =
+        Math.random() * 1.5 + "s";
+
+      piece.style.transform =
+        `rotate(${Math.random() * 360}deg)`;
+
+      confetti.appendChild(piece);
+
+      setTimeout(() => {
+        piece.remove();
+      }, 4500);
+
+    }
+
+  }
+
+
+  /* MUSIC */
+
+  function startMusic() {
+
+    music.volume = 0.45;
+
+    music.play().catch(() => {
+      // Browser blocked autoplay.
+      // Music can still play after the user taps the wish button.
+    });
+
+  }
+
+
+  /* OPENING */
+
+  setTimeout(() => {
+
+    showScreen(countdownScreen);
+
+    startMusic();
+
+    startCountdown();
+
+  }, 5000);
+
+
+  /* COUNTDOWN 1 → 23 */
+
+  function startCountdown() {
+
+    let number = 1;
+
+    countdownNumber.textContent = number;
+
+    const counter = setInterval(() => {
+
+      number++;
+
+      countdownNumber.textContent = number;
+
+      countdownNumber.animate(
+        [
+          { transform: "scale(.7)", opacity: .2 },
+          { transform: "scale(1)", opacity: 1 }
+        ],
+        {
+          duration: 450,
+          easing: "ease-out"
+        }
+      );
+
+      if (number >= 23) {
+
+        clearInterval(counter);
+
+        setTimeout(() => {
+          revealBirthday();
+        }, 1300);
+
+      }
+
+    }, 230);
+
+  }
+
+
+  /* BIRTHDAY */
+
+  function revealBirthday() {
+
+    showScreen(birthdayScreen);
+
+    launchFirework(true);
+
+    setTimeout(() => {
+      launchFirework(true);
+    }, 700);
+
+    setTimeout(() => {
+      startFireworks(false);
+    }, 1500);
+
+  }
+
+
+  /* WISH BUTTON */
+
+  wishButton.addEventListener("click", () => {
+
+    stopFireworks();
+
+    if (music.paused) {
+      music.play().catch(() => {});
+    }
+
+    showScreen(messageScreen);
+
+    confettiBurst();
+
+    launchFirework(true);
+
+    setTimeout(() => {
+      launchFirework(true);
+    }, 700);
+
+    setTimeout(() => {
+      launchFirework(false);
+    }, 1500);
+
+    /* Let the message breathe before the final moment */
+
+    setTimeout(() => {
+
+      showScreen(finalScreen);
+
+      stopFireworks();
+
+      launchFirework(true);
+
+      setTimeout(() => {
+        launchFirework(true);
+      }, 400);
+
+      setTimeout(() => {
+        launchFirework(true);
+      }, 800);
+
+      setTimeout(() => {
+        startFireworks(true);
+      }, 1300);
+
+      confettiBurst();
+
+    }, 13000);
+
+  });
+
+});  startCountdown();
 };
 
 
