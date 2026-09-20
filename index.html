@@ -6,35 +6,178 @@
   <title>For Claris ❤️</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <div id="stars"></div>
   <div id="fireworks"></div>
   <div id="confetti"></div>
 
-  <!-- INTRO -->
-  <div id="intro" class="intro">
+  <!-- OPENING -->
+  <section id="intro" class="intro">
     <div class="intro-glow"></div>
-    <div class="heart">❤️</div>
-    <div class="small-intro">SPECIAL CELEBRATION</div>
-    <h1>CLARIS</h1>
-    <div class="intro-text">Turning 23 today!</div>
-    <button id="beginButton">Begin Experience</button>
-  </div>
 
-  <!-- COUNTDOWN -->
-  <div id="countdownScene" class="scene hidden">
-    <div id="countdown"></div>
-  </div>
+    <div class="heart">❤️</div>
+
+    <p class="small-intro">
+      I made something special for you...
+    </p>
+
+    <h1>CLARIS</h1>
+
+    <p class="intro-text">
+      Tonight is all about you. ✨
+    </p>
+
+    <button id="beginButton">
+      ✨ TAP TO BEGIN ✨
+    </button>
+  </section>
+
+
+  <!-- AGE COUNTDOWN -->
+  <main id="countdownScene" class="scene hidden">
+    <div id="countdown">1</div>
+  </main>
+
 
   <!-- BIRTHDAY -->
-  <div id="birthday" class="birthday hidden">
-    <div class="age-subtitle">CELEBRATING</div>
-    <div class="age"><span>2</span><span>3</span></div>
-    <h1>Happy Birthday</h1>
-    <h2>Claris ❤️</h2>
+  <section id="birthday" class="birthday hidden">
 
-    <div class="cake">
+    <div class="age">
+      <span>2</span>
+      <span>3</span>
+    </div>
+
+    <div class="age-subtitle">
+      YEARS OF BEING BEAUTIFUL ✨
+    </div>
+
+    <h1>HAPPY BIRTHDAY</h1>
+
+    <h2>CLARIS ❤️</h2>
+
+
+    <!-- MODERN CAKE -->
+    <div class="cake-wrapper">
+
+      <div class="cake-glow"></div>
+
+      <!-- TOP TIER -->
+      <div class="cake-tier cake-top-tier">
+
+        <div id="candles" class="candle-row"></div>
+
+        <div class="cake-top-cream"></div>
+
+        <div class="cake-drip"></div>
+
+        <div class="cake-decoration">
+          <span>✦</span>
+          <span>♡</span>
+          <span>✦</span>
+        </div>
+
+      </div>
+
+
+      <!-- LOWER TIER -->
+      <div class="cake-tier cake-bottom-tier">
+
+        <div class="cream-ribbon"></div>
+
+        <div class="cake-drips">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="cake-flowers">
+          <span>🌸</span>
+          <span>🌷</span>
+          <span>🌸</span>
+        </div>
+
+      </div>
+
+
+      <!-- CAKE BOARD -->
+      <div class="cake-board"></div>
+
+      <!-- NAME TOPPER -->
+      <div class="cake-topper">
+        <span>Claris</span>
+        <small>♡</small>
+      </div>
+
+    </div>
+
+
+    <!-- WISH -->
+    <div id="wish" class="wish hidden">
+
+      <h3>
+        Make a wish, Claris... ✨
+      </h3>
+
+      <p>
+        Close your eyes and make your birthday wish. ❤️
+      </p>
+
+      <button id="wishButton">
+        🕯️ Make My Wish
+      </button>
+
+    </div>
+
+
+    <!-- LOVE MESSAGE -->
+    <div id="message" class="message hidden">
+
+      <p>
+        Today isn't just about celebrating another year of your life;
+        it's about celebrating the beautiful person you are.
+      </p>
+
+      <p>
+        I'm grateful for every moment, every laugh, every memory,
+        and every little thing that makes you <strong>you</strong>.
+      </p>
+
+      <p class="love">
+        I love you, Claris. ❤️
+      </p>
+
+      <p>
+        And I hope 23 brings you the happiness, peace, success
+        and beautiful moments you deserve.
+      </p>
+
+      <p class="final-line">
+        Here's to you, my love. ❤️✨
+      </p>
+
+      <div class="beautiful">
+        23 looks beautiful on you, Claris. ❤️
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MUSIC -->
+  <audio id="birthdayMusic" loop>
+    <source src="birthday.mp3" type="audio/mpeg">
+  </audio>
+
+
+  <script src="script.js"></script>
+
+</body>
+                   </html>    <div class="cake">
       <div class="plate"></div>
       <div class="cake-body"></div>
       <div class="cake-top">
