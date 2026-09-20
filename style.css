@@ -1,0 +1,489 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at center, #30104d 0%, #10051f 45%, #020208 100%);
+  color: white;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(circle, white 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,.7) 1px, transparent 1px);
+
+  background-size: 90px 90px, 150px 150px;
+  background-position: 20px 30px, 70px 100px;
+
+  opacity: .7;
+
+  animation: stars 12s linear infinite;
+}
+
+@keyframes stars {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(90px);
+  }
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  position: relative;
+  z-index: 5;
+}
+
+.intro-glow {
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  border-radius: 50%;
+
+  background: #ff1493;
+
+  filter: blur(120px);
+
+  opacity: .25;
+}
+
+.heart {
+  font-size: 70px;
+
+  animation:
+    heartbeat 1.5s infinite;
+}
+
+.small-intro {
+  margin-top: 20px;
+
+  font-size: 16px;
+
+  letter-spacing: 3px;
+
+  color: #ffd166;
+}
+
+.intro h1 {
+  margin-top: 10px;
+
+  font-size:
+    clamp(60px, 15vw, 150px);
+
+  letter-spacing: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #fff,
+      #ff7eb3,
+      #ffd166,
+      #fff
+    );
+
+  background-size: 300%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  animation: shine 3s linear infinite;
+}
+
+.intro-text {
+  margin-top: 15px;
+
+  font-size: 20px;
+
+  color: #eee;
+}
+
+button {
+  border: none;
+
+  border-radius: 50px;
+
+  padding: 15px 30px;
+
+  margin-top: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff4d9d,
+      #7b2cff
+    );
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 25px rgba(255,77,157,.7);
+
+  transition: .3s;
+}
+
+button:hover {
+  transform: scale(1.08);
+
+  box-shadow:
+    0 0 40px rgba(255,77,157,1);
+}
+
+
+/* =========================
+   SCENE
+========================= */
+
+.scene {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  z-index: 5;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+#countdown {
+  font-size:
+    clamp(120px, 30vw, 320px);
+
+  font-weight: 1000;
+
+  text-shadow:
+    0 0 15px white,
+    0 0 35px #ff4d9d,
+    0 0 70px #8a2be2,
+    0 0 130px #7b2cff;
+
+  animation:
+    numberIn .8s ease;
+}
+
+@keyframes numberIn {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      scale(2.5)
+      rotateX(70deg)
+      rotateY(40deg);
+  }
+
+  60% {
+    opacity: 1;
+
+    transform:
+      scale(.9)
+      rotateX(-10deg)
+      rotateY(-10deg);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      scale(1)
+      rotateX(0)
+      rotateY(0);
+  }
+}
+
+
+/* =========================
+   BIRTHDAY
+========================= */
+
+.birthday {
+  width: 100%;
+  height: 100vh;
+
+  position: relative;
+
+  z-index: 5;
+
+  overflow-y: auto;
+
+  text-align: center;
+
+  padding: 25px 15px 50px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  animation:
+    birthdayReveal 2s ease;
+}
+
+@keyframes birthdayReveal {
+
+  from {
+    opacity: 0;
+    transform: scale(.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* =========================
+   23
+========================= */
+
+.age {
+  display: flex;
+
+  gap: 5px;
+
+  font-size:
+    clamp(130px, 30vw, 330px);
+
+  font-weight: 1000;
+
+  line-height: .75;
+
+  perspective: 900px;
+}
+
+.age span {
+  display: inline-block;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #ffe66d 25%,
+      #ff9d00 50%,
+      #ff3d81 75%,
+      #7a00ff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  text-shadow:
+    8px 8px 0 rgba(60,0,90,.7),
+    15px 15px 25px rgba(0,0,0,.8),
+    0 0 40px #ffcc00;
+
+  animation:
+    floating 3s ease-in-out infinite alternate;
+}
+
+.age span:nth-child(2) {
+  animation-delay: .3s;
+}
+
+@keyframes floating {
+
+  from {
+    transform:
+      rotateX(8deg)
+      rotateY(-8deg)
+      translateY(0);
+  }
+
+  to {
+    transform:
+      rotateX(-8deg)
+      rotateY(8deg)
+      translateY(-15px);
+  }
+}
+
+.age-subtitle {
+  color: #ffd166;
+
+  letter-spacing: 4px;
+
+  font-size: 15px;
+
+  margin-bottom: 15px;
+}
+
+
+/* =========================
+   TITLES
+========================= */
+
+.birthday h1 {
+  font-size:
+    clamp(30px, 7vw, 75px);
+
+  letter-spacing: 6px;
+
+  background:
+    linear-gradient(
+      90deg,
+      white,
+      #ffd166,
+      #ff4d9d,
+      white
+    );
+
+  background-size: 300%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  animation:
+    shine 3s linear infinite;
+}
+
+.birthday h2 {
+  margin-top: 8px;
+
+  font-size:
+    clamp(25px, 5vw, 50px);
+
+  color: #ff7eb3;
+
+  text-shadow:
+    0 0 20px #ff1493;
+}
+
+@keyframes shine {
+  to {
+    background-position: 300%;
+  }
+}
+
+
+/* =========================
+   CAKE
+========================= */
+
+.cake {
+  position: relative;
+
+  width: 260px;
+  height: 190px;
+
+  margin-top: 20px;
+
+  filter:
+    drop-shadow(
+      0 20px 20px rgba(0,0,0,.7)
+    );
+}
+
+.plate {
+  position: absolute;
+
+  bottom: 0;
+  left: 10px;
+
+  width: 240px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(#eee, #777);
+
+  box-shadow:
+    0 8px 15px #000;
+}
+
+.cake-body {
+  position: absolute;
+
+  bottom: 20px;
+  left: 30px;
+
+  width: 200px;
+  height: 100px;
+
+  border-radius:
+    12px 12px 25px 25px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #7b241c,
+      #d35400,
+      #ff8c42,
+      #a93226
+    );
+
+  box-shadow:
+    inset 0 -15px 20px rgba(0,0,0,.3),
+    inset 0 10px 10px rgba(255,255,255,.2);
+}
+
+.cake-top {
+  position: absolute;
+
+  left: 25px;
+  bottom:
