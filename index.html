@@ -16,35 +16,41 @@
   <!-- OPENING -->
   <section id="intro" class="screen active">
     <div class="intro-content">
-      <p class="small-text">A little something for you...</p>
+
+      <div class="small-text">A little something for you...</div>
 
       <h1>CLARIS</h1>
 
-      <p class="intro-heart">❤️</p>
+      <div class="heart">❤️</div>
 
-      <p class="intro-message">
-        Today is a special day because<br>
-        someone very special was born.
+      <p>
+        Today is a special day<br>
+        because someone very special was born.
       </p>
 
-      <p class="birthday-opening">
-        Happy 23rd Birthday, my love ❤️
-      </p>
+      <h2>Happy 23rd Birthday, My Love ❤️</h2>
+
     </div>
   </section>
 
 
   <!-- COUNTDOWN -->
   <section id="countdownScreen" class="screen">
-    <div class="countdown-container">
-      <p class="countdown-label">A new chapter begins...</p>
+
+    <div class="countdown-content">
+
+      <p class="countdown-top">
+        WATCH YOUR JOURNEY...
+      </p>
 
       <div id="countdownNumber">1</div>
 
-      <p class="countdown-sub">
-        23 beautiful years of you ❤️
+      <p class="countdown-bottom">
+        beautiful years of you ❤️
       </p>
+
     </div>
+
   </section>
 
 
@@ -53,7 +59,9 @@
 
     <div class="birthday-content">
 
-      <p class="celebrate">✨ TODAY WE CELEBRATE YOU ✨</p>
+      <p class="celebrate">
+        ✨ TODAY WE CELEBRATE YOU ✨
+      </p>
 
       <div class="big-number">23</div>
 
@@ -61,12 +69,14 @@
 
       <h3>CLARIS ❤️</h3>
 
-      <!-- YOUR CAKE IMAGE -->
       <div class="cake-container">
-        <img src="cake.png" alt="Birthday cake">
+        <img
+          src="cake.png.jpeg"
+          alt="Claris birthday cake"
+        >
       </div>
 
-      <p class="cake-message">
+      <p class="wish-text">
         Make a wish, my love... ✨
       </p>
 
@@ -84,11 +94,13 @@
 
     <div class="message-card">
 
-      <p class="message-title">💌 MY MESSAGE TO YOU</p>
+      <div class="message-heading">
+        💌 MY MESSAGE TO YOU
+      </div>
 
       <div class="letter">
 
-        <p>Claris,</p>
+        <p><strong>Claris,</strong></p>
 
         <p>
           Happy 23rd Birthday, my love. ❤️
@@ -101,12 +113,12 @@
 
         <p>
           I'm grateful for every moment, every laugh, every memory,
-          and every little thing that makes you <em>you</em>.
+          and every little thing that makes you you.
         </p>
 
         <p>
-          I love you, and I hope 23 brings you happiness, peace,
-          success and beautiful moments you truly deserve.
+          I love you, and I hope 23 brings you the happiness,
+          peace, success and beautiful moments you deserve.
         </p>
 
         <p>
@@ -131,9 +143,14 @@
 
       <div class="final-heart">❤️</div>
 
-      <h1>23 LOOKS BEAUTIFUL<br>ON YOU, CLARIS.</h1>
+      <h1>
+        23 LOOKS BEAUTIFUL<br>
+        ON YOU, CLARIS.
+      </h1>
 
-      <p>Happy Birthday, my love. ✨</p>
+      <p>
+        Happy Birthday, my love. ✨
+      </p>
 
     </div>
 
@@ -141,183 +158,12 @@
 
 
   <!-- MUSIC -->
-  <audio id="birthdayMusic" loop>
+  <audio id="birthdayMusic" loop preload="auto">
     <source src="perfect.mp3" type="audio/mpeg">
   </audio>
 
-  <script src="script.js"></script>
-
-</body>
-  </html>
-  <!-- AGE COUNTDOWN -->
-  <main id="countdownScene" class="scene hidden">
-    <div id="countdown">1</div>
-  </main>
-
-
-  <!-- BIRTHDAY -->
-  <section id="birthday" class="birthday hidden">
-
-    <div class="age">
-      <span>2</span>
-      <span>3</span>
-    </div>
-
-    <div class="age-subtitle">
-      YEARS OF BEING BEAUTIFUL ✨
-    </div>
-
-    <h1>HAPPY BIRTHDAY</h1>
-
-    <h2>CLARIS ❤️</h2>
-
-
-    <!-- MODERN CAKE -->
-    <div class="cake-wrapper">
-
-      <div class="cake-glow"></div>
-
-      <!-- TOP TIER -->
-      <div class="cake-tier cake-top-tier">
-
-        <div id="candles" class="candle-row"></div>
-
-        <div class="cake-top-cream"></div>
-
-        <div class="cake-drip"></div>
-
-        <div class="cake-decoration">
-          <span>✦</span>
-          <span>♡</span>
-          <span>✦</span>
-        </div>
-
-      </div>
-
-
-      <!-- LOWER TIER -->
-      <div class="cake-tier cake-bottom-tier">
-
-        <div class="cream-ribbon"></div>
-
-        <div class="cake-drips">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <div class="cake-flowers">
-          <span>🌸</span>
-          <span>🌷</span>
-          <span>🌸</span>
-        </div>
-
-      </div>
-
-
-      <!-- CAKE BOARD -->
-      <div class="cake-board"></div>
-
-      <!-- NAME TOPPER -->
-      <div class="cake-topper">
-        <span>Claris</span>
-        <small>♡</small>
-      </div>
-
-    </div>
-
-
-    <!-- WISH -->
-    <div id="wish" class="wish hidden">
-
-      <h3>
-        Make a wish, Claris... ✨
-      </h3>
-
-      <p>
-        Close your eyes and make your birthday wish. ❤️
-      </p>
-
-      <button id="wishButton">
-        🕯️ Make My Wish
-      </button>
-
-    </div>
-
-
-    <!-- LOVE MESSAGE -->
-    <div id="message" class="message hidden">
-
-      <p>
-        Today isn't just about celebrating another year of your life;
-        it's about celebrating the beautiful person you are.
-      </p>
-
-      <p>
-        I'm grateful for every moment, every laugh, every memory,
-        and every little thing that makes you <strong>you</strong>.
-      </p>
-
-      <p class="love">
-        I love you, Claris. ❤️
-      </p>
-
-      <p>
-        And I hope 23 brings you the happiness, peace, success
-        and beautiful moments you deserve.
-      </p>
-
-      <p class="final-line">
-        Here's to you, my love. ❤️✨
-      </p>
-
-      <div class="beautiful">
-        23 looks beautiful on you, Claris. ❤️
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- MUSIC -->
-  <audio id="birthdayMusic" loop>
-    <source src="birthday.mp3" type="audio/mpeg">
-  </audio>
-
 
   <script src="script.js"></script>
 
 </body>
-                   </html>    <div class="cake">
-      <div class="plate"></div>
-      <div class="cake-body"></div>
-      <div class="cake-top">
-        <div class="icing"></div>
-        <div class="cake-line"></div>
-        <div class="cake-line second"></div>
-      </div>
-      <div id="candles" class="candle-row"></div>
-    </div>
-
-    <div id="wish" class="wish hidden">
-      <h3>Make a wish 🎂</h3>
-      <button id="wishButton">Blow Candles</button>
-    </div>
-
-    <div id="message" class="message hidden">
-      <p class="love">Claris, you are loved beyond words 💖</p>
-      <p class="final-line">May this year bring joy, success, and endless happiness!</p>
-      <div class="beautiful">✨ You are beautiful ✨</div>
-    </div>
-  </div>
-
-  <!-- MUSIC -->
-  <audio id="birthdayMusic" src="birthday.mp3"></audio>
-
-  <script src="script.js" defer></script>
-</body>
-</html><link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+        </html>
