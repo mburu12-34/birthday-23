@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Claris ❤️</title>
+  <title>Happy 23rd Birthday Claris ❤️</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,27 +14,141 @@
   <div id="confetti"></div>
 
   <!-- OPENING -->
-  <section id="intro" class="intro">
-    <div class="intro-glow"></div>
+  <section id="intro" class="screen active">
+    <div class="intro-content">
+      <p class="small-text">A little something for you...</p>
 
-    <div class="heart">❤️</div>
+      <h1>CLARIS</h1>
 
-    <p class="small-intro">
-      I made something special for you...
-    </p>
+      <p class="intro-heart">❤️</p>
 
-    <h1>CLARIS</h1>
+      <p class="intro-message">
+        Today is a special day because<br>
+        someone very special was born.
+      </p>
 
-    <p class="intro-text">
-      Tonight is all about you. ✨
-    </p>
-
-    <button id="beginButton">
-      ✨ TAP TO BEGIN ✨
-    </button>
+      <p class="birthday-opening">
+        Happy 23rd Birthday, my love ❤️
+      </p>
+    </div>
   </section>
 
 
+  <!-- COUNTDOWN -->
+  <section id="countdownScreen" class="screen">
+    <div class="countdown-container">
+      <p class="countdown-label">A new chapter begins...</p>
+
+      <div id="countdownNumber">1</div>
+
+      <p class="countdown-sub">
+        23 beautiful years of you ❤️
+      </p>
+    </div>
+  </section>
+
+
+  <!-- BIRTHDAY REVEAL -->
+  <section id="birthdayScreen" class="screen">
+
+    <div class="birthday-content">
+
+      <p class="celebrate">✨ TODAY WE CELEBRATE YOU ✨</p>
+
+      <div class="big-number">23</div>
+
+      <h2>HAPPY BIRTHDAY</h2>
+
+      <h3>CLARIS ❤️</h3>
+
+      <!-- YOUR CAKE IMAGE -->
+      <div class="cake-container">
+        <img src="cake.png" alt="Birthday cake">
+      </div>
+
+      <p class="cake-message">
+        Make a wish, my love... ✨
+      </p>
+
+      <button id="wishButton">
+        🎂 MAKE MY WISH
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- MY MESSAGE -->
+  <section id="messageScreen" class="screen">
+
+    <div class="message-card">
+
+      <p class="message-title">💌 MY MESSAGE TO YOU</p>
+
+      <div class="letter">
+
+        <p>Claris,</p>
+
+        <p>
+          Happy 23rd Birthday, my love. ❤️
+        </p>
+
+        <p>
+          Today isn't just about celebrating another year of your life;
+          it's about celebrating the beautiful person you are.
+        </p>
+
+        <p>
+          I'm grateful for every moment, every laugh, every memory,
+          and every little thing that makes you <em>you</em>.
+        </p>
+
+        <p>
+          I love you, and I hope 23 brings you happiness, peace,
+          success and beautiful moments you truly deserve.
+        </p>
+
+        <p>
+          Here's to you, my love. ❤️✨
+        </p>
+
+        <div class="love-line">
+          I LOVE YOU, CLARIS. ❤️
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+  <section id="finalScreen" class="screen">
+
+    <div class="final-content">
+
+      <div class="final-heart">❤️</div>
+
+      <h1>23 LOOKS BEAUTIFUL<br>ON YOU, CLARIS.</h1>
+
+      <p>Happy Birthday, my love. ✨</p>
+
+    </div>
+
+  </section>
+
+
+  <!-- MUSIC -->
+  <audio id="birthdayMusic" loop>
+    <source src="perfect.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+
+</body>
+  </html>
   <!-- AGE COUNTDOWN -->
   <main id="countdownScene" class="scene hidden">
     <div id="countdown">1</div>
