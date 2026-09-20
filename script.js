@@ -332,3 +332,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+const musicButton = document.getElementById("musicButton");
+
+function startMusic() {
+  music.volume = 0.5;
+
+  music.play().then(() => {
+    musicButton.style.display = "none";
+  }).catch(() => {
+    musicButton.style.display = "flex";
+  });
+}
+
+musicButton.addEventListener("click", () => {
+  music.play().then(() => {
+    musicButton.style.display = "none";
+  });
+});
