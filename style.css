@@ -4,37 +4,360 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Georgia, "Times New Roman", serif;
+  background: #050509;
+  color: white;
 }
 
 body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  font-family: "Georgia", "Times New Roman", serif;
-  color: white;
-  background:
-    radial-gradient(circle at 50% 30%, #3a164d 0%, #170d25 35%, #08050f 75%);
+  position: relative;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
+/* BACKGROUND */
 
 #stars {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.15) 1px, transparent 2px),
+    radial-gradient(circle at 70% 30%, rgba(255,255,255,.12) 1px, transparent 2px),
+    radial-gradient(circle at 40% 80%, rgba(255,255,255,.1) 1px, transparent 2px),
+    radial-gradient(circle at 85% 75%, rgba(255,255,255,.12) 1px, transparent 2px);
+  background-size: 160px 160px;
+  opacity: .7;
   pointer-events: none;
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
-    radial-gradient(circle, rgba(255,190,230,.45) 1px, transparent 1px);
-  background-size: 90px 90px, 140px 140px;
-  background-position: 20px 30px, 70px 80px;
-  opacity: .45;
 }
 
-#stars::after {
+.screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.5s ease;
+  z-index: 5;
+}
+
+.screen.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* INTRO */
+
+.intro-content {
+  padding: 25px;
+  animation: introFloat 3s ease-in-out infinite;
+}
+
+.small-text {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: .65;
+  margin-bottom: 25px;
+}
+
+.intro-content h1 {
+  font-size: clamp(55px, 18vw, 130px);
+  letter-spacing: 10px;
+  font-weight: 400;
+}
+
+.intro-heart {
+  font-size: 35px;
+  margin: 20px;
+}
+
+.intro-message {
+  line-height: 1.8;
+  font-size: clamp(17px, 4vw, 23px);
+  opacity: .85;
+}
+
+.birthday-opening {
+  margin-top: 35px;
+  font-size: clamp(20px, 5vw, 30px);
+}
+
+/* COUNTDOWN */
+
+.countdown-container {
+  padding: 20px;
+}
+
+.countdown-label {
+  font-size: 17px;
+  letter-spacing: 3px;
+  opacity: .65;
+}
+
+#countdownNumber {
+  font-size: clamp(130px, 40vw, 300px);
+  line-height: .9;
+  font-weight: bold;
+  margin: 25px 0;
+  text-shadow:
+    0 0 20px rgba(255,255,255,.35),
+    0 0 60px rgba(255,255,255,.15);
+}
+
+.countdown-sub {
+  font-size: 18px;
+  opacity: .7;
+}
+
+/* BIRTHDAY */
+
+.birthday-content {
+  width: 100%;
+  max-width: 700px;
+  padding: 25px;
+}
+
+.celebrate {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  opacity: .75;
+}
+
+.big-number {
+  font-size: clamp(100px, 30vw, 210px);
+  line-height: .8;
+  font-weight: bold;
+  text-shadow: 0 0 45px rgba(255,255,255,.3);
+}
+
+.birthday-content h2 {
+  font-size: clamp(30px, 8vw, 60px);
+  margin-top: 20px;
+  letter-spacing: 4px;
+}
+
+.birthday-content h3 {
+  font-size: clamp(28px, 7vw, 50px);
+  margin-top: 10px;
+  font-weight: normal;
+}
+
+.cake-container {
+  margin: 25px auto 10px;
+  width: min(75vw, 330px);
+  animation: cakeAppear 2s ease;
+}
+
+.cake-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,.5));
+}
+
+.cake-message {
+  font-size: 19px;
+  margin: 12px 0 20px;
+  font-style: italic;
+}
+
+button {
+  border: 1px solid rgba(255,255,255,.5);
+  background: rgba(255,255,255,.08);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+/* MESSAGE */
+
+.message-card {
+  width: min(90%, 700px);
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 30px 25px;
+  background: rgba(10,10,15,.72);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 20px 80px rgba(0,0,0,.5);
+}
+
+.message-title {
+  font-family: Arial, sans-serif;
+  letter-spacing: 3px;
+  font-size: 13px;
+  opacity: .65;
+  margin-bottom: 30px;
+}
+
+.letter {
+  font-size: clamp(18px, 4.5vw, 24px);
+  line-height: 1.8;
+}
+
+.letter p {
+  margin-bottom: 22px;
+}
+
+.love-line {
+  margin-top: 35px;
+  font-size: clamp(25px, 7vw, 45px);
+  font-weight: bold;
+  animation: loveGlow 2s ease-in-out infinite;
+}
+
+/* FINAL */
+
+.final-content {
+  padding: 25px;
+}
+
+.final-heart {
+  font-size: 65px;
+  margin-bottom: 30px;
+  animation: heartbeat 1.3s infinite;
+}
+
+.final-content h1 {
+  font-size: clamp(32px, 9vw, 70px);
+  line-height: 1.2;
+  letter-spacing: 2px;
+}
+
+.final-content p {
+  margin-top: 30px;
+  font-size: 20px;
+  opacity: .75;
+}
+
+/* FIREWORKS */
+
+#fireworks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.firework {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  animation: explode 1.3s ease-out forwards;
+}
+
+.spark {
+  position: absolute;
+  width: 4px;
+  height: 30px;
+  border-radius: 50%;
+  transform-origin: center bottom;
+}
+
+/* CONFETTI */
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 7px;
+  height: 14px;
+  animation: fall 3s linear forwards;
+}
+
+/* ANIMATIONS */
+
+@keyframes introFloat {
+  0%,100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes cakeAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes loveGlow {
+  0%,100% {
+    transform: scale(1);
+    text-shadow: 0 0 10px rgba(255,255,255,.2);
+  }
+  50% {
+    transform: scale(1.04);
+    text-shadow: 0 0 35px rgba(255,255,255,.45);
+  }
+}
+
+@keyframes heartbeat {
+  0%,100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.2);
+  }
+  30% {
+    transform: scale(1);
+  }
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(.1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-20px) rotate(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+  }#stars::after {
   content: "";
   position: absolute;
   inset: 0;
